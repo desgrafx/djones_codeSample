@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Code Sample - Demetrius J. Jones</title>
+	
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="myModal.css">
+</head>
+
+
+<body>
+	<!-- Header Start -->
+	<header>
+		<h1 id="myName">
+			<a href="http://www.desgrafx.com/demetrius" title="Demetrius Jones">Demetrius Jones</a>
+		</h1>
+	</header>
+	<!-- Main Body -->
+	<section id="main">
+		<a href="#modal" class="startButton button">Click to Begin</a>
+		<a href="#thanks" class="endButton button">Click to End</a>
+	</section>
+	
+	<!-- Modal Form -->
+	<section id="modal" >
+		
+			<h2 id="form-title">Please sign up for more about me! ;)</h2>
+			<form name="form">
+				<input type="text" name="Full Name" id="fullName" placeholder="Full Name" class="form-inputs">
+				<input type="email" required="required" name="emailAddress" placeholder="Email Address" class="form-inputs" id="emailAddress"  >
+				<input type="submit" id="SignUpLink" class="submit img" name="Sign Up" value="Sign Up" />
+			</form>
+		
+	</section>
+
+	<!-- Modals -->
+	<section id="modalWrapper"></section>
+	<section id="thanks"></section>
+
+	
+	<!-- Overlay -->
+	<section id="modal-background"></section>
+	
+	<!-- Scripts start here	 -->
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="myModalScript.js"></script>
+
+</body>
+</html>
