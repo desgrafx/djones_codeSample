@@ -1,0 +1,86 @@
+/*Non-Resposive Setup Start*/
+
+/* Template-specific stuff
+ *
+ * Customizations just for the template; these are not necessary for anything
+ * with disabling the responsiveness.
+ */
+
+/* Account for fixed navbar */
+* {
+ -webkit-box-sizing: inherit;
+ -moz-box-sizing: inherit;
+box-sizing: inherit;
+}
+#mainArea {
+  height:auto;
+  padding-bottom: 15px;
+}
+
+.nopad {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+/*Non-responsive Setup End*/
+
+
+
+.myMain {
+  color:#474747;
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: ghostwhite;
+}
+.headertext {
+  margin:25px auto;
+  font-weight: 300;
+  font-size:17px;
+}
+.headertext a {
+  color:#2da7ea;
+  text-decoration: underline;
+  font-size:17px;
+}
+.form-col {
+  color:#474747;
+}
+.form-col label {
+  color:#474747;
+  font-size: 90%;
+  font-weight: 300;
+  margin-top:15px;
+}
+.form-col:first-child, .form-col:last-child {
+  
+}
+.form-col p {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-size:0.865em;
+}
+.form-col hr {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  border: 0;
+  border-top: 1px solid dimgrey;
+}
+
+#myFormSubmit {
+  padding-top:50px;
+  clear: both;
+}
+  #myFormSubmit span{
+    clear: both;
+    float: right;
+    margin-top: 15px;
+    width:100%;
+    text-align: right;
+  }
+
+.footerFormText {
+  margin-top: 35px;
+}
+
+.help-block {
+  font-size: 12px;
+}

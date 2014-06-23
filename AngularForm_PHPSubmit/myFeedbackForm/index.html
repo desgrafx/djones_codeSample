@@ -1,0 +1,667 @@
+	  <!--[if lte IE 8]>
+		  <script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
+
+        <script>
+          document.createElement('ng-form');
+
+          // Optionally these for CSS
+          document.createElement('ng:form');
+        </script>
+     
+		<![endif]-->
+		
+		<!-- Bootstrap CSS -->
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		
+		<!-- <link href="myFormBootstrap.css" rel="stylesheet" media="screen"> -->
+		<link href="myForm.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="http://www2.dollargeneral.com/Corporate-Information/pages/css/ui-lightness/jquery-ui-1.9.2.custom.css">
+		<!-- jQuery -->	<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>	
+		<script src="myForm.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+		
+		<!-- PROCESS FORM WITH AJAX (OLD) 
+	<script>
+		$(document).ready(function() {
+
+			$('form#aspnetForm').attr('novalidate', 'novalidate');
+			// process the form
+
+					// remove the past errors
+					$('#issueTitle-group').removeClass('has-error');
+					$('#issueTitle-group .help-block').empty();
+					$('#issueDate-group').removeClass('has-error');
+					$('#issueDate-group .help-block').empty();
+					$('#name-group').removeClass('has-error');
+					$('#name-group .help-block').empty();
+					$('#zip-group').removeClass('has-error');
+					$('#zip-group .help-block').empty();
+					$('#acctEmail-group').removeClass('has-error');
+					$('#acctEmail-group .help-block').empty();
+					$('#phonenumber-group').removeClass('has-error');
+					$('#phonenumber-group .help-block').empty();
+					$('#summary-group').removeClass('has-error');
+					$('#summary-group .help-block').empty();
+					
+
+					// remove success messages
+					$('#messages').removeClass('alert alert-success').hide().empty();
+
+			$('#submit-btn').on('click', function(event) {
+					// get the form data
+					var formData = {
+						'issueTitle' 		: $('input[name=issueTitle]').val(),
+						'inputIssueDate' 	: $('input[name=issueDate]').val(),
+						'name' 				: $('input[name=name]').val(),
+						'zip' 				: $('input[name=zip]').val(),
+						'acctEmail' 		: $('input[name=acctEmail]').val(),
+						'phonenumber' 		: $('input[name=phonenumber]').val(),
+						'summary' 			: $('textarea[name=summary]').val(),
+						'state' 			: $('select[name=state]').val(),
+						'city' 				: $('input[name=city]').val(),
+						'street' 			: $('input[name=street]').val(),
+						'device' 			: $('select[name=device]').val(),
+						'operatingSystem' 	: $('input[name=operatingSystem]').val(),
+						'systemVersion' 	: $('input[name=systemVersion]').val(),
+						'browser' 			: $('input[name=browser]').val(),
+						'browserVersion' 	: $('input[name=browserVersion]').val()
+					};
+					var issueTitle 		=	$('input[name=issueTitle]').val();  	
+					var	inputIssueDate	=	$('input[name=issueDate]').val();  		
+					var	name 			=	$('input[name=name]').val();  			
+					var	zip 			=	$('input[name=zip]').val();  			
+					var	acctEmail 		=	$('input[name=acctEmail]').val();  		
+					var	phonenumber 	=	$('input[name=phonenumber]').val();  
+					var	summary 		=	$('textarea[name=summary]').val();  	
+					var	state 			=	$('select[name=state]').val();  		
+					var	city 			=	$('input[name=city]').val();  			
+					var	street			=	$('input[name=street]').val();  		
+					var	device 			=	$('select[name=device]').val();  		
+					var	operatingSystem	=	$('input[name=operatingSystem]').val()
+					var	systemVersion	=	$('input[name=systemVersion]').val(); 
+					var	browser 		=	$('input[name=browser]').val();  		
+					var	browserVersion	=	$('input[name=browserVersion]').val();
+					var dataIE = 
+						'&issueTitle=' +  		issueTitle 		+
+						'&inputIssueDate=' +  	inputIssueDate	+
+						'&name=' +  			name 			+
+						'&zip=' +  				zip 			+
+						'&acctEmail=' +  		acctEmail 		+
+						'&phonenumber=' +  		phonenumber 	+
+						'&summary=' +  			summary 		+
+						'&state=' +  			state 			+
+						'&city=' +  			city 			+
+						'&street=' +  			street			+
+						'&device=' +  			device 			+
+						'&operatingSystem=' +  	operatingSystem +
+						'&systemVersion=' +  	systemVersion		+
+						'&browser=' +  			browser 		+
+						'&browserVersion=' +  	browserVersion	
+					;
+
+			
+					function ieSubmit(dataIE, dataResponse){
+						var xdr2 = new XDomainRequest();
+						xdr2.onload=function(){
+							var dataResponse = xdr2.responseText;
+
+										if (issueTitle == '' ) {
+											$('#issueTitle-group').addClass('has-error');
+											$('#issueTitle-group .help-block').html('An Issue Title is Required.');
+											return false;
+										}else if (inputIssueDate == '') {
+											$('#issueDate-group').addClass('has-error');
+											$('#issueDate-group .help-block').html('Please Let Us Know When This Issue Occured.');
+											return false;
+										}else if (name == '') {
+											$('#name-group').addClass('has-error');
+											$('#name-group .help-block').html('Name is Required.');
+											return false;
+										}else if ( zip == "" || isNaN(zip) || (zip.length != 5)) {
+											$('#zip-group').addClass('has-error');
+											$('#zip-group .help-block').html('Please enter your zip code as #####.');
+											return false;
+										}else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(acctEmail) == false ) {
+											$('#acctEmail-group').addClass('has-error');
+											$('#acctEmail-group .help-block').html('We Will Need a Proper Account Email to Contact You.');
+											return false;
+										}else if ( phonenumber == "" || isNaN(phonenumber) || (phonenumber.length != 10)) {
+											$('#phonenumber-group').addClass('has-error');
+											$('#phonenumber-group .help-block').html('Please enter phone number as ##########.');
+											return false;
+										}else {
+											// if validation is good add success message
+											$('#messages').addClass('alert alert-success').append('<p>Thank you for submitting this information. We are very sorry that you are experiencing issues. We will make it our priority to get back to you as soon as possible in order to facilitate a resolution.</p>').show();
+											$('#issueTitle-group').removeClass('has-error');
+											$('#issueTitle-group .help-block').empty();
+											$('#issueDate-group').removeClass('has-error');
+											$('#issueDate-group .help-block').empty();
+											$('#name-group').removeClass('has-error');
+											$('#name-group .help-block').empty();
+											$('#zip-group').removeClass('has-error');
+											$('#zip-group .help-block').empty();
+											$('#acctEmail-group').removeClass('has-error');
+											$('#acctEmail-group .help-block').empty();
+											$('#phonenumber-group').removeClass('has-error');
+											$('#phonenumber-group .help-block').empty();
+											$('#summary-group').removeClass('has-error');
+											$('#summary-group .help-block').empty();
+											$('#ng-form').slideUp();
+									  }
+						}
+						xdr2.open("GET", "processForm.php/?" + dataIE);
+						xdr2.send();
+					}
+
+
+
+					function emailMe(dataIE, dataResponse){
+						if ($.browser.msie) {
+			        			ieSubmit(dataIE);
+								        			
+						 }else{
+						 	$.ajax({
+								type 		: 'POST',
+								url 		: 'processForm.php',
+								crossDomain	: true,
+								data 		: formData,
+								dataType 	: 'json',
+								cache 		: false,
+								headers 	: { 'Content-Type': 'application/x-www-form-urlencoded' },
+								success 	: function(data) {
+
+									// log data to the console so we can see
+									console.log(data);
+
+									// if validation fails
+									// add the error class to show a red input
+									// add the error message to the help block under the input
+									if ( ! data.success) {
+
+										if (data.errors.issueTitle) {
+											$('#issueTitle-group').addClass('has-error');
+											$('#issueTitle-group .help-block').html(data.errors.issueTitle);
+										}
+
+										if (data.errors.inputIssueDate) {
+											$('#issueDate-group').addClass('has-error');
+											$('#issueDate-group .help-block').html(data.errors.inputIssueDate);
+										}
+
+										if (data.errors.name) {
+											$('#name-group').addClass('has-error');
+											$('#name-group .help-block').html(data.errors.name);
+										}
+
+										if (data.errors.zip) {
+											$('#zip-group').addClass('has-error');
+											$('#zip-group .help-block').html(data.errors.zip);
+										}
+
+										if (data.errors.acctEmail) {
+											$('#acctEmail-group').addClass('has-error');
+											$('#acctEmail-group .help-block').html(data.errors.acctEmail);
+										}
+
+										if (data.errors.phonenumber) {
+											$('#phonenumber-group').addClass('has-error');
+											$('#phonenumber-group .help-block').html(data.errors.phonenumber);
+										}
+
+									} else {
+
+										// if validation is good add success message
+										$('#messages').show().addClass('alert alert-success').append('<p>' + data.message + '</p>');
+										$('#issueTitle-group').removeClass('has-error');
+										$('#issueTitle-group .help-block').empty();
+										$('#issueDate-group').removeClass('has-error');
+										$('#issueDate-group .help-block').empty();
+										$('#name-group').removeClass('has-error');
+										$('#name-group .help-block').empty();
+										$('#zip-group').removeClass('has-error');
+										$('#zip-group .help-block').empty();
+										$('#acctEmail-group').removeClass('has-error');
+										$('#acctEmail-group .help-block').empty();
+										$('#phonenumber-group').removeClass('has-error');
+										$('#phonenumber-group .help-block').empty();
+										$('#summary-group').removeClass('has-error');
+										$('#summary-group .help-block').empty();
+										$('#ng-form').slideUp();
+									}
+								}
+							});
+		  				}
+					}
+			    	emailMe(dataIE);
+					// stop the form from submitting and refreshing
+					event.preventDefault();
+
+				//});
+			});
+		});
+	</script>-->
+
+	</head>
+<body>
+		<!-- AJAX
+		<div id="ng-app" class="myMain container nopad" ng-app="formApp" ng-submit="formController" >
+
+			
+			<div class="row headertext">
+				<div class="col-xs-10">
+					<p><strong>Technical Feedback</strong> </p>
+					<p>Please use the form below to report any technical concern or issues. This form is for technical issues, if you have a <a href="#">Customer Service Concern please click here</a> to provide that feedback.</p>
+				</div>
+			</div>
+
+			-- SHOW ERROR/SUCCESS MESSAGES --
+
+			<div class="row">
+				<div class="col-xs-12" >
+					<div id="ng-form" class="row formControl" novalidate>
+						<div class="col-xs-12">
+							<div class="col-xs-3 form-col">							
+								<div class="col-xs-9 ">
+								<p><strong>Issue Information</strong></p>
+									<hr>
+								</div>
+								<div id="issueTitle-group" class="col-xs-10 form-group">
+									<div class="col-xs-12" >
+										<label class="control-label"><sup>*</sup>Issue Title</label>
+										<input type="text" name="issueTitle" id="issueTitle" class="form-control input-sm col-xs-12" value="" required="required" pattern=""  title="">
+										<span class="help-block" ></span>
+									</div>
+								</div>
+								<div id="issueDate-group" class="col-xs-10 form-group">
+									<div class="col-xs-12" >
+										<label  class="control-label"><sup>*</sup>Date of Issue</label>
+										<input type="text" name="issueDate" id="issueDate" class="input-sm form-control" value="" required="required"  title="">
+										<span class="help-block" ></span>
+										
+									</div>
+								</div>
+								<div id="name-group" class="col-xs-10 form-group">
+									<div class="col-xs-12" >
+												<label class="control-label" for="name"><sup>*</sup>Name</label>
+										<input type="text" name="name" id="name" class="form-control input-sm col-xs-12" value="" required="required" pattern=""  title="">
+										<span class="help-block" ></span>
+									</div>
+								</div>
+								<div id="zip-group" class="col-xs-10 form-group">
+									<div class="col-xs-6" >
+											<label class="control-label" for="zip"><sup>*</sup>Zip Code</label>
+										<input type="text" name="zip" id="zip" class="form-control input-sm col-xs-6" value="" maxlength="5" required="required" pattern="[0-9]*"  title="">
+										<span class="help-block" ></span>
+									</div>
+								</div>
+								<div id="acctEmail-group" class="col-xs-10 form-group">
+									<div class="col-xs-12" >
+																	<label class="control-label" for="acctEmail"><sup>*</sup>Account Email</label>
+										<input type="email" name="acctEmail" id="acctEmail" class="form-control input-sm col-xs-12" value="" required="required" pattern=""  title="">
+										<span class="help-block" ></span>
+									</div>
+								</div>
+								<div id="phonenumber-group" class="col-xs-10 form-group">
+									<div class="col-xs-12" >
+
+										<label class="control-label" for="phonenumber"><sup>*</sup>Account Phone Number</label>
+										<input type="tel" name="phonenumber" id="phonenumber" class="form-control input-sm" value="" maxlength="10" required="required"   title="">
+										<span class="help-block" ></span>
+									</div>
+								</div>
+								<div id="summary-group" class="col-xs-10 form-group">
+									<div class="col-xs-12">
+										<label for="summary">Issue Summary</label>
+										<textarea class="form-control input-sm" name="summary" maxlength="1000" rows="3" id="summary" ></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-3 form-col">							
+								<div class="col-xs-12 ">
+								<p><strong>Store Information</strong></p>
+									<hr>
+								</div>
+								<div class="col-xs-10 form-group">
+									<div class="col-xs-6">
+										<label for="state" class=" control-label">State</label>
+										<select name="state" id="state" class="form-control input-sm col-xs-12" required="required" >
+											<option value="-Select-" >-Select-</option>
+											<option value="AL">AL</option>
+								            <option value="AK">AK</option>
+								            <option value="AZ">AZ</option>
+								            <option value="AR">AR</option>
+								            <option value="CA">CA</option>
+								            <option value="CO">CO</option>
+								            <option value="CT">CT</option>
+								            <option value="DE">DE</option>
+								            <option value="DC">DC</option>
+								            <option value="FL">FL</option>
+								            <option value="GA">GA</option>
+								            <option value="HI">HI</option>
+								            <option value="ID">ID</option>
+								            <option value="IL">IL</option>
+								            <option value="IN">IN</option>
+								            <option value="IA">IA</option>
+								            <option value="KS">KS</option>
+								            <option value="KY">KY</option>
+								            <option value="LA">LA</option>
+								            <option value="ME">ME</option>
+								            <option value="MD">MD</option>
+								            <option value="MA">MA</option>
+								            <option value="MI">MI</option>
+								            <option value="MN">MN</option>
+								            <option value="MS">MS</option>
+								            <option value="MO">MO</option>
+								            <option value="MT">MT</option>
+								            <option value="NE">NE</option>
+								            <option value="NV">NV</option>
+								            <option value="NH">NH</option>
+								            <option value="NJ">NJ</option>
+								            <option value="NM">NM</option>
+								            <option value="NY">NY</option>
+								            <option value="NC">NC</option>
+								            <option value="ND">ND</option>
+								            <option value="OH">OH</option>
+								            <option value="OK">OK</option>
+								            <option value="OR">OR</option>
+								            <option value="PA">PA</option>
+								            <option value="RI">RI</option>
+								            <option value="SC">SC</option>
+								            <option value="SD">SD</option>
+								            <option value="TN">TN</option>
+								            <option value="TX">TX</option>
+								            <option value="UT">UT</option>
+								            <option value="VT">VT</option>
+								            <option value="VA">VA</option>
+								            <option value="WA">WA</option>
+								            <option value="WV">WV</option>
+								            <option value="WI">WI</option>
+								            <option value="WY">WY</option>
+										</select>
+									</div>
+
+									<div class="col-xs-12">
+										<label for="city">City</label>
+										<input type="text" name="city" id="city" class="form-control input-sm col-xs-12" value="" pattern=""  title="">
+										<span class="help-block"></span>
+									</div>
+
+									<div class="col-xs-12">
+										<label for="street">Street</label>
+										<input type="text" name="street" id="street" class="form-control input-sm col-xs-12" value=""  pattern=""  title="">
+										<span class="help-block"></span>
+									</div>
+								</div>
+							</div> 
+							<div class="col-xs-3  form-col">							
+								<div class="col-xs-12 ">
+								<p><strong>System Information</strong></p>
+									<hr>
+								</div>
+								<div class="col-xs-10 form-group">
+									
+									<div class="col-xs-12">
+										<label for="device" class="control-label">Type of Device</label>
+										<select name="device" id="device" class="form-control input-sm col-xs-12 " required="required" >
+											<option value="-Select-" >-Select-</option>
+											<option value="Desktop/Laptop">Desktop/Laptop</option>
+											<option value="Tablet">Tablet</option>
+											<option value="Mobile Phone ">Mobile Phone </option>
+										</select>
+									</div>
+									<div class="col-xs-12">
+										<label for="operatingSystem">Operating System</label>
+										<input type="text" name="operatingSystem" id="operatingSystem" class="form-control input-sm col-xs-12" value="" pattern=""  title="">
+										<span class="help-block"></span>
+									</div>
+									<div class="col-xs-12">
+										<label for="systemVersion">Operating System Version</label>
+										<input type="text" name="systemVersion" id="systemVersion" class="form-control input-sm col-xs-12" value=""  pattern=""  title="">
+										<span class="help-block"></span>
+									</div>
+									<div class="col-xs-12">
+										<label for="browser">Browser</label>
+										<input type="text" name="browser" id="browser" class="form-control input-sm col-xs-12" value="" pattern=""  title="">
+										<span class="help-block"></span>
+									</div>
+									<div class="col-xs-12">
+										<label for="browserVersion">Browser Version</label>
+										<input type="text" name="browserVersion" id="browserVersion" class="form-control input-sm col-xs-12" value=""  pattern=""   title="">
+										<span class="help-block"></span>
+									</div>
+									<div id="myFormSubmit">
+										<div class="col-xs-12">
+											<button id="submit-btn" type="submit" class="next-btn btn btn-default pull-right" >Submit</button>
+											<span><strong><sup>*</sup>Indicates required field</strong></span>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div >
+				</div>
+			</div>
+				<div class="row">
+					<div id="messages" class="alert alert-success" ng-show="message" >{{ message }}</div>
+				</div>
+		</div>-->
+
+		<div id="ng-app" class="myFormMain container nopad" ng-app="formApp" ng-controller="formController">	
+		
+			<div class="row headertext">
+				<div class="col-xs-12" style="background:#f1f1f1;color:black;height:35px;font-weight:bold;margin-top:5px;margin-bottom:5px;">
+					<p style="margin-top:5px;margin-bottom:5px;">Technical Feedback</p>
+					<hr>
+				</div>
+				<div class="col-xs-12">	
+					<p>Please use the form below to report any technical concerns or feedback . This form is for technical feedback, if you have a <a href="#">Customer Service Concern please click here</a> to provide that feedback.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 ">
+					<form class="formControl" ng-submit="processForm()" novalidate>
+						<div class="col-xs-12 form-col">							
+							<div class="col-xs-12 ">
+							<p><strong>Information</strong></p>
+								<hr>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12" ng-class="{ 'has-error' : errorIssueTitle }">
+									<label class="control-label"><sup>*</sup>Short Description</label>
+									<input type="text" name="" id="issueTitle" class="form-control input-sm col-sm-12" value="" required="required" pattern=""  ng-model="formData.issueTitle" title="">
+									<span class="help-block" ng-show="errorIssueTitle">{{ errorIssueTitle }}</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<label for="summary">Summary</label>
+									<textarea class="form-control input-sm" maxlength="1000" rows="7" id="summary" ng-model="formData.summary"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12" ng-class="{ 'has-error' : errorInputIssueDate }">
+									<label  class="control-label"><sup>*</sup>Date</label>
+									<input type="text" name="issueDate" id="issueDate" class="form-control" value="" required="required"  ng-model="formData.inputIssueDate" title="">
+									<span class="help-block" ng-show="errorInputIssueDate">{{ errorInputIssueDate }}</span>
+									
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12" ng-class="{ 'has-error' : errorName }">
+									<label class="control-label" for="name"><sup>*</sup>Name</label>
+									<input type="text" name="" id="name" class="form-control input-sm col-sm-12" value="" required="required" pattern=""  ng-model="formData.name" title="">
+									<span class="help-block" ng-show="errorName">{{ errorName }}</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-9"ng-class="{ 'has-error' : errorZip }">
+									<label class="control-label"  for="zip"><sup>*</sup>Zip Code</label>
+									<input type="text" name="" id="zip" class="form-control input-sm col-sm-12" value="" maxlength="5" required="required" pattern="\d*"  ng-model="formData.zip" title="">
+									<span class="help-block" ng-show="errorZip">{{ errorZip }}</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12" ng-class="{ 'has-error' : errorAcctEmail }">
+									<label class="control-label" for="acctEmail"><sup>*</sup>Account Email</label>
+									<input type="email" name="" id="acctEmail" class="form-control input-sm col-sm-12" value="" required="required" pattern=""  ng-model="formData.acctEmail" title="">
+									<span class="help-block" ng-show="errorAcctEmail">{{ errorAcctEmail }}</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12" ng-class="{ 'has-error' : errorPhonenumber }">
+									<label class="control-label" for="phonenumber"><sup>*</sup>Account Phone Number</label>
+									<input type="tel" name="" id="phonenumber" class="form-control input-sm" value="" maxlength="10" required="required"  ng-model="formData.phonenumber" title="">
+									<span class="help-block" ng-show="errorPhonenumber">{{ errorPhonenumber }}</span>
+								</div>
+							</div>
+							
+						</div>
+						<div class="col-xs-12 form-col">							
+							<div class="col-xs-12 ">
+							<p><strong>Store Information</strong></p>
+								<hr>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-9">
+									<label for="state" class=" control-label">State</label>
+									<select name="" id="state" class="form-control input-sm col-sm-12" required="required" ng-model="formData.state">
+										<option value="AL">AL</option>
+							            <option value="AK">AK</option>
+							            <option value="AZ">AZ</option>
+							            <option value="AR">AR</option>
+							            <option value="CA">CA</option>
+							            <option value="CO">CO</option>
+							            <option value="CT">CT</option>
+							            <option value="DE">DE</option>
+							            <option value="DC">DC</option>
+							            <option value="FL">FL</option>
+							            <option value="GA">GA</option>
+							            <option value="HI">HI</option>
+							            <option value="ID">ID</option>
+							            <option value="IL">IL</option>
+							            <option value="IN">IN</option>
+							            <option value="IA">IA</option>
+							            <option value="KS">KS</option>
+							            <option value="KY">KY</option>
+							            <option value="LA">LA</option>
+							            <option value="ME">ME</option>
+							            <option value="MD">MD</option>
+							            <option value="MA">MA</option>
+							            <option value="MI">MI</option>
+							            <option value="MN">MN</option>
+							            <option value="MS">MS</option>
+							            <option value="MO">MO</option>
+							            <option value="MT">MT</option>
+							            <option value="NE">NE</option>
+							            <option value="NV">NV</option>
+							            <option value="NH">NH</option>
+							            <option value="NJ">NJ</option>
+							            <option value="NM">NM</option>
+							            <option value="NY">NY</option>
+							            <option value="NC">NC</option>
+							            <option value="ND">ND</option>
+							            <option value="OH">OH</option>
+							            <option value="OK">OK</option>
+							            <option value="OR">OR</option>
+							            <option value="PA">PA</option>
+							            <option value="RI">RI</option>
+							            <option value="SC">SC</option>
+							            <option value="SD">SD</option>
+							            <option value="TN">TN</option>
+							            <option value="TX">TX</option>
+							            <option value="UT">UT</option>
+							            <option value="VT">VT</option>
+							            <option value="VA">VA</option>
+							            <option value="WA">WA</option>
+							            <option value="WV">WV</option>
+							            <option value="WI">WI</option>
+							            <option value="WY">WY</option>
+									</select>
+								</div>
+
+								<div class="col-sm-12">
+									<label for="city">City</label>
+									<input type="text" name="" id="city" class="form-control input-sm col-sm-12" value="" pattern=""  ng-model="formData.city" title="">
+									<span class="help-block"></span>
+								</div>
+
+								<div class="col-sm-12">
+									<label for="street">Street</label>
+									<input type="text" name="" id="street" class="form-control input-sm col-sm-12" value=""  pattern=""  ng-model="formData.street" title="">
+									<span class="help-block"></span>
+								</div>
+							</div>
+						</div> 
+						<div class="col-xs-12  form-col">							
+							<div class="col-xs-12 ">
+							<p><strong>System Information</strong></p>
+								<hr>
+							</div>
+							<div class="form-group">
+								
+								<div class="col-sm-12">
+									<label for="device" class="control-label">Type of Device</label>
+									<select name="" id="device" class="form-control input-sm col-sm-12 " required="required" ng-model="formData.device">
+										<option value="Desktop/Laptop">Desktop/Laptop</option>
+										<option value="Tablet">Tablet</option>
+										<option value="Mobile Phone ">Mobile Phone </option>
+									</select>
+								</div>
+								<div class="col-sm-12">
+									<label for="operatingSystem">Operating System</label>
+									<input type="text" name="" id="operatingSystem" class="form-control input-sm col-sm-12" value="" pattern=""  ng-model="formData.operatingSystem" title="">
+									<span class="help-block"></span>
+								</div>
+								<div class="col-sm-12">
+									<label for="systemVersion">Operating System Version</label>
+									<input type="text" name="" id="systemVersion" class="form-control input-sm col-sm-12" value=""  pattern=""  ng-model="formData.systemVersion" title="">
+									<span class="help-block"></span>
+								</div>
+								<div class="col-sm-12">
+									<label for="browser">Browser</label>
+									<input type="text" name="" id="browser" class="form-control input-sm col-sm-12" value="" pattern=""  ng-model="formData.browser" title="">
+									<span class="help-block"></span>
+								</div>
+								<div class="col-sm-12">
+									<label for="browserVersion">Browser Version</label>
+									<input type="text" name="" id="browserVersion" class="form-control input-sm col-sm-12" value=""  pattern=""  ng-model="formData.browserVersion" title="">
+									<span class="help-block"></span>
+								</div>
+								<div id="myFormSubmit">
+									<div class="col-sm-12">
+										<button type="submit" id="submit-btn" class="next-btn btn btn-default pull-right">Submit</button>
+										<span><strong><sup>*</sup>Indicates required field</strong></span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div id="messages" class="alert alert-success" ng-show="message" >{{ message }}</div>
+			</div>
+	</div>
+
+
+		
+		
+		<script>
+		 $(function() {
+				$( "#issueDate" ).datepicker();
+			});
+		 jQuery(document).ready(function() {
+		 	jQuery( "input" ).click(function() {
+			  jQuery( this ).parent( "div" ).removeClass('has-error');
+			});
+		 });
+		 </script>
+	     <!--<script src="myForm.js"></script>-->
+	 </div>
+	</body>
