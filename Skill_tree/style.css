@@ -16,7 +16,6 @@
 	}
 
 	html, body {
-	  /* important for the full-width image to work */
 	  height: 100%;
 	}
 
@@ -50,6 +49,7 @@ Main components
   background-color: rgba(120, 210, 190, 0.3);
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
   z-index: 15;
+  font-size:2em;
 }
 
 .blurred-bg {
@@ -71,5 +71,9 @@ Main components
   color:whitesmoke;
   font-weight: 900;
   letter-spacing: -0.125rem; 
+  margin-bottom:50px;
 }
 
+#skillcards span {
+  margin-right:15px
+}

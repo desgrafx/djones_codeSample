@@ -33,4 +33,11 @@
 		"javascript", "jquery", "angularjs"
 	],
 	"experience": 3
+}, {
+	"name": "dave",
+	"id": 6,
+	"skills": [
+		"html", "css" ,"javascript"
+	],
+	"experience": 10
 }]
