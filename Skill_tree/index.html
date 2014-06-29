@@ -51,7 +51,8 @@
 				data[i];
 				console.log(data[i]);
 
-				var contentPanel = '<div class="col-md-4"><div class="panel panel-default"><div class="panel-body"><ul id="employees"><li id="'+ data.id +'">'+ data.id +'</li></ul></div></div></div>';
+				var contentPanel = '<div class="col-md-4"><div class="panel panel-default"><div class="panel-body"><ul id="employees"><li id="'+ data[i].id +'">'+ data[i].id +'</li></ul></div></div></div>';
+
 				$('#skillcards').append(contentPanel);
 			}
 		}
