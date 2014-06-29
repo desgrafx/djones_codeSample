@@ -1,33 +1,33 @@
 [{
-	"username": "demetrius",
+	"name": "demetrius",
 	"id": 0,
 	"skills": [
 		"javascript", "jquery", "html", "css"
 	],
 	"experience": 15
 }, {
-	"username": "jordan",
+	"name": "jordan",
 	"id": 1,
 	"skills": [
 		"html", "css"
 	],
 	"experience": 1
 }, {
-	"username": "evan",
+	"name": "evan",
 	"id": 4,
 	"skills": [
 		"javascript", "jquery", "html"
 	],
 	"experience": 3
 }, {
-	"username": "rob",
+	"name": "rob",
 	"id": 2,
 	"skills": [
 		"jquery", "css", "html", "php"
 	],
 	"experience": 3
 }, {
-	"username": "aaron",
+	"name": "aaron",
 	"id": 3,
 	"skills": [
 		"javascript", "jquery", "angularjs"
