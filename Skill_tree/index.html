@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="">
-	<head>
-		<title>New Project</title>
-		<meta charset="UTF-8">
-		<meta name=description content="">
-		<meta name=viewport content="width=device-width, initial-scale=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Bootstrap CSS -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	</head>
-	<body>
-		<h1 class="text-center">New Project</h1>
+<head>
+	<title>New Project</title>
+	<meta charset="UTF-8">
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap CSS -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" media="screen"></head>
+<body>
+	<h1 class="text-center">New Project</h1>
 
-		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
-		<!-- Bootstrap JavaScript -->
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-	</body>
+	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	<script>
+		$('.update').hide();
+
+
+		var data;
+
+		$.ajax({
+			url: 'dj.api.php',
+			type: 'GET',
+		}).done(function(response) {
+			data = JSON.parse(response);
+			run();
+		});
+
+		var run = function() {
+			
+		}
+
+	</script>
+</body>
 </html>
