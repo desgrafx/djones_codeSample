@@ -52,6 +52,7 @@ Main components
   font-size:2em;
 }
 
+
 .blurred-bg {
   /* we use jQuery to apply a mask to this element - CSS clip property */
   position: absolute;
@@ -91,4 +92,12 @@ Main components
 }
 .msg {
   float:left;
+}
+
+@media only screen and (max-width: 768px) {
+  #main-content {
+    height: inherit;
+    overflow-x: auto;
+    overflow-y: scroll;
+  }
 }

@@ -54,7 +54,7 @@
 				data[i];
 				console.log(data[i]);
 
-				var contentPanel = '<div class="col-sm-6 col-md-4"><div class="panel panel-default"><div class="panel-body"><ul class="list-unstyled" id="employees"><li id="employee" class="'+ data[i].id +'"><span class="glyphicon glyphicon-user"></span> Employee:<input id="name" value="' + data[i].name + '"></li><li id="experience"><span class="glyphicon glyphicon-tasks"></span> Experience: '+ data[i].experience +'</li></ul></div><div class="panel-footer"><span class="glyphicon glyphicon-tags"></span> '+ data[i].skills + '</div></div></div>';
+				var contentPanel = '<div class="col-sm-6 col-md-4"><div class="panel panel-default"><div class="panel-body"><ul class="list-unstyled" id="employees"><li id="employee" class="'+ data[i].id +'"><span class="glyphicon glyphicon-user"></span> Employee:<input id="name" value="' + data[i].name + '"></li><li id="experience"><span class="glyphicon glyphicon-tasks"></span> Experience:'+ data[i].experience +'</li></ul></div><div class="panel-footer"><span class="glyphicon glyphicon-tags"></span>'+ data[i].skills + '</div></div></div>';
 
 				$('#skillcards').append(contentPanel);
 			}
@@ -71,6 +71,8 @@
 					    default:
 					        console.log('oops');
 					}
+					
+
 
 					update(keyVal);
 
@@ -96,7 +98,8 @@
 				});	
 			});
 			$('.close').on('click', function(event) {
-				$(this).closest('div').fadeOut(800);
+
+				$(this).closest('div').fadeOut(800).removeClass('alert-danger');
 			});
 
 		};
