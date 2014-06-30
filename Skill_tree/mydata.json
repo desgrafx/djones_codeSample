@@ -14,28 +14,28 @@
 	"experience": 1
 }, {
 	"name": "evan",
-	"id": 4,
+	"id": 2,
 	"skills": [
 		"javascript", "jquery", "html"
 	],
 	"experience": 3
 }, {
 	"name": "rob",
-	"id": 2,
+	"id": 3,
 	"skills": [
 		"jquery", "css", "html", "php"
 	],
 	"experience": 3
 }, {
 	"name": "aaron",
-	"id": 3,
+	"id": 4,
 	"skills": [
 		"javascript", "jquery", "angularjs"
 	],
 	"experience": 3
 }, {
 	"name": "dave",
-	"id": 6,
+	"id": 5,
 	"skills": [
 		"html", "css" ,"javascript"
 	],

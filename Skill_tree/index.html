@@ -22,6 +22,9 @@
 				</div>
 			</div>
 			<div id="skillcards" class="row"></div>
+			<div class="row">
+				<div class="col-xs-12 update alert"><p class="msg"></p><span class="glyphicon glyphicon-remove pull-right close"></span></div>
+			</div>
 		</div>
 	</div>
 	<div class="blurred-bg"></div>
@@ -51,15 +54,55 @@
 				data[i];
 				console.log(data[i]);
 
-				var contentPanel = '<div class="col-sm-6 col-md-4"><div class="panel panel-default"><div class="panel-body"><ul class="list-unstyled" id="employees"><li id="employee '+ data[i].id +'"><span class="glyphicon glyphicon-user"></span> Employee:  '+ data[i].name +'</li><li id="experience"><span class="glyphicon glyphicon-tasks"></span> Experience: '+ data[i].experience +'</li></ul></div><div class="panel-footer"><span class="glyphicon glyphicon-tags"></span> '+ data[i].skills + '</div></div></div>';
+				var contentPanel = '<div class="col-sm-6 col-md-4"><div class="panel panel-default"><div class="panel-body"><ul class="list-unstyled" id="employees"><li id="employee" class="'+ data[i].id +'"><span class="glyphicon glyphicon-user"></span> Employee:<input id="name" value="' + data[i].name + '"></li><li id="experience"><span class="glyphicon glyphicon-tasks"></span> Experience: '+ data[i].experience +'</li></ul></div><div class="panel-footer"><span class="glyphicon glyphicon-tags"></span> '+ data[i].skills + '</div></div></div>';
 
 				$('#skillcards').append(contentPanel);
 			}
-		}
+			$('input').on('mousedown', function(){
+
+				$(this).change(function(){
+
+					var keyVal = parseInt($(this).parent('li').attr('class'), 10);
+
+					switch($(this).attr('id')) {
+					    case 'name':
+					        data[keyVal].name = $(this).val();
+					        break;
+					    default:
+					        console.log('oops');
+					}
+
+					update(keyVal);
+
+					function update() {
+
+						$.ajax({
+							url: 'dj.api.save.php',
+							type: 'POST',
+							data: JSON.stringify(data[keyVal])
+						}).done(function(response) {
+							console.log(response);
+							if (response == 'Success') {
+								$('.update').show().addClass('alert-success'),
+								$('.msg').text('Successfully Saved!');
+							} else {
+								$('.update').show().addClass('alert-danger'),
+								$('.msg').text('Error!');
+							}
+						});
+
+					}
+
+				});	
+			});
+			$('.close').on('click', function(event) {
+				$(this).closest('div').fadeOut(800);
+			});
+
+		};
 
 
-
-
+		
 		
 
 	</script>
